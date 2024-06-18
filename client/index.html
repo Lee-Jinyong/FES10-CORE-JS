@@ -6,14 +6,17 @@
   <link rel="shortcut icon" href="./assets/tiger.svg" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
 
+  <!-- 03.nodeClass 파일에 필요한 코드 -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="./lib/dom/getNode.js"></script>
   <script src="./lib/utils/type.js"></script>
-  <script defer src="./chapter/dom/01.BOM.js"></script>
+  <script defer src="./chapter/dom/04.attribute.js"></script>
   <title>자바스크립트</title>
 </head>
 <body>
   
   <h1>
-    <span class="first">hello</span>
+    <span class="first" sayHi="hola" data-value="10">hello</span>
     <span class="second">javascript</span>
     
     <!-- 20 파일에 필요한 코드 -->
@@ -38,6 +41,23 @@
   <!-- <ul>
 
   </ul> -->
+
+  <!-- 01.BOM 파일에 필요한 코드 -->
+  <!-- <video autoplay id=""videoElement></video> -->
+
+  <!-- 02.DOM 파일에 필요한 코드 -->
+  <!-- <section id="visual-section">
+    <ul class="list">
+      <li>home</li>
+      <li>about</li>
+      <li>contact</li>
+    </ul>
+
+    <form name="search-box">
+      <label for="search">검색</label>
+      <input type="text" id="search"/>
+    </form>
+  </section> -->
 
 </body>
 </html>
