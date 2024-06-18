@@ -44,6 +44,8 @@ const urlParams = new URLSearchParams(location.search);
 //   console.log(`${key}:${value}`);
 // }
 
+urlParams.get('type'); // listing
+
 
 /* Navigator 객체 -------------------------------------------------------- */
 
@@ -106,7 +108,10 @@ getGeolocation(
 
 // callback -> promise -> async await 순서로 이후 학습 예정
 
-// navigator.mediaDevices.getUserMedia({video:true}) // 카메라 권한 요청
+navigator.mediaDevices.getUserMedia({video:true}) // 카메라 권한 요청
+.then((stream) => {
+  document.querySelector('#videoElement').srcObject = stream;
+})
 
 
 /* Screen 객체 ----------------------------------------------------------- */
