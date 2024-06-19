@@ -62,6 +62,7 @@ if(first.tagName === 'SPAN') { // tagName 사용 예시
 // - innerHTML
 // * 기존 내용 삭제
 // * 기존 내용과 새로운 내용을 합친 새로운 내용을 씀
+// first.innerHTML = '멋쟁이 사자처럼';
 first.innerHTML += '멋쟁이 사자처럼';
 
 
