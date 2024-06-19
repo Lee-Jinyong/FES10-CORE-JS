@@ -85,6 +85,11 @@ function setAttr(node, prop, value) {
   }
 
   // prop에 data가 있으면 dataset으로 넣기 >> 미니 과제
+  if(prop.startsWith('data')) {
+    prop = prop.slice(5);
+    node.dataset[prop] = value;
+    return;
+  }
 
   if(!value) throw new ReferenceError('setAttr 함수의 세 번째 인수는 필수 입력값 입니다.')
 
@@ -97,6 +102,9 @@ console.log(getAttr('.second', 'id'));
 // setAttr('.second', 'class', ''); // 속성 삭제
 
 setAttr('.second', 'data-name', 'tiger'); // 미니 과제
+
+const second = getNode('.second');
+console.log(console.log(second.dataset.name));
 
 
 // getter와 setter 함께 사용할 수 있는 함수
