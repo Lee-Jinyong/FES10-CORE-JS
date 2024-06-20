@@ -88,4 +88,43 @@ function handleMove({offsetX:xPos, offsetY:yPos}) {
   insertLast(ground, template);
 }
 
-ground.addEventListener('mousemove', handleMove);
+// ground.addEventListener('mousemove', handleMove);
+
+
+/* -------------------- throttle(수도꼭지), debounce(공 튀김 방지) ------------------- */
+// debounce
+function debounce(callback, limit=500) {
+  
+  let timeout;
+  
+  return function(e) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      callback.call(this, e);
+    }, limit);
+  }
+}
+
+ground.addEventListener('mousemove', debounce(handleMove));
+
+
+//throttle
+
+function throttle(callback, limit=500){
+  
+  let waiting = false;
+
+  return function(...args) {
+    if(!waiting) {
+      callback.apply(this, args);
+      waiting = true;
+      
+      setTimeout(() => {
+        waiting = false;
+      }, limit)
+    }
+  }
+}
+
+
+ground.addEventListener('mousemove', throttle(handleMove));
