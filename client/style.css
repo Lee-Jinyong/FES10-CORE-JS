@@ -1,4 +1,4 @@
-/* body {
+body {
   height: 100vh;
   display: flex;
   flex-flow: column nowrap;
@@ -40,10 +40,10 @@ ul{
     color: white;
   }
   
-} */
+}
 
 /* -------------------------- 07.event 파일에 필요한 코드 2 ------------------------- */
-.ground {
+/* .ground {
   width: 400px;
   height: 300px;
   border: 5px solid black;
@@ -78,5 +78,5 @@ ul{
   font-size: 2rem;
   position: absolute;
   pointer-events: none;
-}
+} */
 /* ----------------------------------------------------------------------- */
