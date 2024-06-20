@@ -1,16 +1,23 @@
 /* ---------------------------------- class --------------------------------- */
 
+// 클래스 추가 함수
 function addClass(node, ...className) {
   if(isString(node)) node = getNode(node);
 
-  if(isArray(className)) {
-    className.forEach( c => node.classList.add(c));
-    return;
-  }
+  className.forEach((c) => {
 
-  if(!isString(className)) throw new TypeError('addClass 함수의 두 번째 인수는 문자 타입 이어야 합니다.')
+    if(isObject(c)) c = Object.values(c);
 
-  node.classList.add(className);
+    if(c.includes(',')) c = c.replaceAll(/\s*/g, '').split(',');
+
+    if(isArray(c)) {
+      c.forEach(c => node.classList.add(c));
+    } else if(isString(c)) {
+      node.classList.add(c);
+    } else {
+      throw new TypeError('addClass 함수의 두 번째 인수는 문자 타입 이어야 합니다.')
+    }
+  })
 }
 
 // 클래스 삭제 함수
