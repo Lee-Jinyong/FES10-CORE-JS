@@ -1,4 +1,4 @@
-body {
+/* body {
   height: 100vh;
   display: flex;
   flex-flow: column nowrap;
@@ -40,7 +40,7 @@ ul{
     color: white;
   }
   
-}
+} */
 
 /* -------------------------- 07.event 파일에 필요한 코드 2 ------------------------- */
 /* .ground {
@@ -82,7 +82,7 @@ ul{
 /* ----------------------------------------------------------------------- */
 
 /* -------------------------- 08.bubble 파일에 필요한 코드 -------------------------- */
-section {
+/* section {
   background-color: orange;
   padding: 2rem;
 }
@@ -95,5 +95,16 @@ article {
 p {
   background-color: dodgerblue;
   padding: 2rem;
-}
+} */
 /* ----------------------------------------------------------------------- */
+
+/* ------------------------ 09.delegation 파일에 필요한 코드 ------------------------ */
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+
+  li {
+    padding: 1rem;
+  }
+}
