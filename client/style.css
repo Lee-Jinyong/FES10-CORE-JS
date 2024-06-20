@@ -80,3 +80,20 @@ ul{
   pointer-events: none;
 } */
 /* ----------------------------------------------------------------------- */
+
+/* -------------------------- 08.bubble 파일에 필요한 코드 -------------------------- */
+section {
+  background-color: orange;
+  padding: 2rem;
+}
+
+article {
+  background-color: hotpink;
+  padding: 2rem;
+}
+
+p {
+  background-color: dodgerblue;
+  padding: 2rem;
+}
+/* ----------------------------------------------------------------------- */
