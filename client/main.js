@@ -1,7 +1,29 @@
-const a = 'hello';
+// 1. input value 값 가져오기
+//    - input 선택하기
+//    - input에게 input 이벤트를 걸어준다.
+//    - input.value 값을 가져온다.
 
-console.log('안녕 웹브라우저!');
+// 2. 숫자 더하기
+//     - 숫자 형변환
 
-// alert('그만해!');
-// confirm('정말 삭제합니까?');
-// prompt('당신의 이름은 무엇입니까?');
+
+const first = getNode('#firstNumber');
+const second = getNode('#secondNumber')
+const result = getNode('.result')
+
+function handleInput() {
+  const firstValue = +first.value;
+  // const firstValue = Number(first.value);
+  const secondValue = +second.value;
+  // const secondValue = Number(second.value);
+  const total = firstValue + secondValue;
+
+  console.log(total);
+
+  result.textContent = '';
+
+  insertLast(result, total);
+}
+
+first.addEventListener('input', handleInput);
+second.addEventListener('input', handleInput);
