@@ -1,7 +1,11 @@
+import {getNode} from './getNode.js';
+import {isString, isObject, isArray} from '../utils/type.js';
+
+
 /* ---------------------------------- class --------------------------------- */
 
 // 클래스 추가 함수
-function addClass(node, ...className) {
+export function addClass(node, ...className) {
   if(isString(node)) node = getNode(node);
 
   className.forEach((c) => {
@@ -21,7 +25,7 @@ function addClass(node, ...className) {
 }
 
 // 클래스 삭제 함수
-function removeClass(node, className) {
+export function removeClass(node, className) {
   if(isString(node)) node = getNode(node);
 
   if(!className) {
@@ -35,7 +39,7 @@ function removeClass(node, className) {
 }
 
 // 클래스 토글 함수
-function toggleClass(node, className) {
+export function toggleClass(node, className) {
   if(isString(node)) node = getNode(node);
 
   if(!isString(className)) throw new TypeError('toggleClass 함수의 두 번째 인수는 문자 타입 이어야 합니다.')
@@ -70,4 +74,4 @@ function setStyle(node, prop, value) {
 }
 
 // 통합 함수
-const css = (node, prop, value) => !value ? getStyle(node, prop) : setStyle(node, prop, value);
+export const css = (node, prop, value) => !value ? getStyle(node, prop) : setStyle(node, prop, value);

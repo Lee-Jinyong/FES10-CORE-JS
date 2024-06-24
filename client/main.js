@@ -1,3 +1,16 @@
+/* global clearContents */
+
+// named export (이름 내보내기)
+// dafault export (기본 내보내기) - 무조건 1개
+
+import {
+  attr,
+  getNode,
+  clearContents,
+  insertLast
+} from './lib/index.js';
+
+
 // 1. input value 값 가져오기
 //    - input 선택하기
 //    - input에게 input 이벤트를 걸어준다.
@@ -9,8 +22,6 @@
 // 3. result 내용 비우기
 //    - clearContents
 
-
-/* global clearContents */
 
 const first = getNode('#firstNumber');
 const second = getNode('#secondNumber');
@@ -25,7 +36,7 @@ function handleInput() {
   const total = firstValue + secondValue;
 
   clearContents(result);
-
+  
   insertLast(result, total);
 }
 
