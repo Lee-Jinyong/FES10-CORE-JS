@@ -1,7 +1,12 @@
 /* global clearContents */
 
 // named export (이름 내보내기)
-// dafault export (기본 내보내기) - 무조건 1개
+// default export (기본 내보내기) - 무조건 1개 
+
+// 만약 rename/alias가 필요해진 경우
+// named export => getNode as $
+// default export => import a from './clearContents.js';
+
 
 import {
   attr,
@@ -10,6 +15,7 @@ import {
   insertLast
 } from './lib/index.js';
 
+// import clearContents from './lib/dom/clearContents.js';
 
 // 1. input value 값 가져오기
 //    - input 선택하기

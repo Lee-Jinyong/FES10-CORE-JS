@@ -1,7 +1,7 @@
 import {getNode} from './getNode.js';
 import {isString} from '../utils/type.js';
 
-export function clearContents(node) {
+export default function clearContents(node) {
   if(isString(node)) node = getNode(node);
 
   if(node.nodeName === 'INPUT' || node.nodeName === 'TEXTAREA') {
@@ -11,3 +11,6 @@ export function clearContents(node) {
 
   node.textContent = '';
 }
+
+// 이름 내보내기
+// export default clearContents
