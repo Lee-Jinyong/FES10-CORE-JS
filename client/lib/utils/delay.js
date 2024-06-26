@@ -176,7 +176,7 @@ async function 라면끓이기() {
 
 async function getData() {
   const data = await xhrPromise.get('https://pokeapi.co/api/v2/pokemon/15');
-  console.log(data.sprites.other.showdown['front_default']);
+  // console.log(data.sprites.other.showdown['front_default']);
   insertLast(document.body, `<img src="${data.sprites.other.showdown['front_default']}" alt="" />`)
 }
 
