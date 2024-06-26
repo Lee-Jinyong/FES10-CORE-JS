@@ -13,6 +13,11 @@ const user = {
 // 3 : interactive
 // 4 : complete => 성공 의미X, 통신이 끝남O
 
+
+/* -------------------------------------------- */
+/*               xhr callback 방식               */
+/* -------------------------------------------- */
+
 function xhr({
   method = 'GET',
   url = '',
@@ -113,11 +118,37 @@ xhr.delete = (url, onSuccess, onFail) =>{
 /*                               xhr Promise 방식                             */
 /* -------------------------------------------------------------------------- */
 
-function xhrPromise(method, url, body) {
+const defaultOptions = {
+  method:'GET',
+  url: '',
+  body: null,
+  errorMessage:'서버와의 통신이 원활하지 않습니다.',
+  headers:{
+    'Content-Type':'application/json',
+    'Access-Control-Allow-Origin': '*'
+  }
+}
+
+export function xhrPromise(options) {
+
+  const {method, url, body, headers, errorMessage} = {
+    ...defaultOptions,
+    ...options,
+    headers:{
+      ...defaultOptions.headers,
+      ...options.headers
+    }
+  };
+
+  // const {method, url, body, headers, errorMessage} = config;
 
   const xhr = new XMLHttpRequest();
-  
+
   xhr.open(method, url);
+
+  Object.entries(headers).forEach(([key, value]) => {
+    xhr.setRequestHeader(key, value);
+  })
 
   xhr.send(JSON.stringify(body));
 
@@ -130,7 +161,7 @@ function xhrPromise(method, url, body) {
           resolve(JSON.parse(xhr.response));
         } else{
           // 실패
-          reject({message: '알 수 없는 오류'})
+          reject({message: errorMessage});
         }
       }
     })
@@ -141,3 +172,46 @@ function xhrPromise(method, url, body) {
 // .then((res) => {
 //   console.log(res)
 // })
+
+// xhrPromise({url: ENDPOINT})
+// .then((res)=>{
+//   console.log( res );
+// })
+
+//함수의 메서드
+// xhrPromise.get = (url) => {
+//   return xhrPromise({url});
+// }
+
+// xhrPromise.post = (url, body) => {
+//   return xhrPromise({
+//     url,
+//     body,
+//     method: 'POST'
+//   })
+// }
+
+// xhrPromise.put = (url, body) => {
+//   return xhrPromise({
+//     url,
+//     body,
+//     method: 'PUT'
+//   })
+// }
+
+// xhrPromise.post = (url) => {
+//   return xhrPromise({
+//     url,
+//     method: 'DELETE'
+//   })
+// }
+
+//함수의 메서드 줄여쓰기
+xhrPromise.get = (url) => xhrPromise({url})
+xhrPromise.post = (url,body) => xhrPromise({url, body, method:'POST'})
+xhrPromise.put = (url,body) => xhrPromise({url, body, method:'PUT'})
+xhrPromise.delete = url => xhrPromise({url, method:'DELETE'})
+
+
+xhrPromise.get(ENDPOINT)
+.then()
