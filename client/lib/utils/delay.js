@@ -180,4 +180,4 @@ async function getData() {
   insertLast(document.body, `<img src="${data.sprites.other.showdown['front_default']}" alt="" />`)
 }
 
-getData();
+// getData();
