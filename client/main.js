@@ -1,6 +1,9 @@
+/* global gsap */
+
 import {
   tiger,
   getNode,
+  changeColor,
   renderUserCard,
 } from './lib/index.js'
 
@@ -20,11 +23,30 @@ const ENDPOINT = 'https://jsonplaceholder.typicode.com/users';
 const userCardInner = getNode('.user-card-inner');
 
 async function renderUserList() {
-  const response = await tiger.get(ENDPOINT)
 
-  const data = response.data;
+  try {
+    const response = await tiger.get(ENDPOINT)
 
-  data.forEach(user => renderUserCard(userCardInner, user))
+    const data = response.data;
+
+    data.forEach(user => renderUserCard(userCardInner, user))
+
+    changeColor('.user-card');
+
+    gsap.from('.user-card', {
+      x: 100,
+      opacity: 0,
+      stagger: {
+        amount: 1,
+        // from: 'center',
+      },
+    })
+  }
+  catch {
+    console.log('에러가 발생했습니다!');
+  }
+
+  
 }
 
 renderUserList();
