@@ -5,12 +5,14 @@ import {
   delayP,
   getNode,
   changeColor,
+  clearContents,
   renderSpinner,
   renderUserCard,
   renderEmptyCard,
 } from './lib/index.js'
 
-const ENDPOINT = 'https://jsonplaceholder.typicode.com/users';
+// const ENDPOINT = 'https://jsonplaceholder.typicode.com/users';
+const ENDPOINT = 'http://localhost:3000/users';
 
 
 // 1. user 데이터 fetch
@@ -30,7 +32,7 @@ async function renderUserList() {
   // 로딩 스피너 렌더링
   renderSpinner(userCardInner);
 
-  await delayP(2000);
+  // await delayP(2000);
 
   try {
 
@@ -71,3 +73,26 @@ async function renderUserList() {
 }
 
 renderUserList();
+
+
+// 삭제
+function handleDeleteCard(e) {
+  const button = e.target.closest('button');
+
+  if(!button) return;
+
+  const article = button.closest('article');
+
+  const index = article.dataset.index.slice(5);
+
+  console.log(index);
+
+  tiger.delete(`${ENDPOINT}/${index}`)
+  .then(() => {
+    //요청 보내고 렌더링하기
+    clearContents(userCardInner);
+    renderUserList();
+  })
+}
+
+userCardInner.addEventListener('click', handleDeleteCard);
