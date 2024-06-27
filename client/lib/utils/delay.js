@@ -83,7 +83,7 @@ const defaultOptions = {
   timeout: 1000,
 }
 
-function delayP(options) {
+export function delayP(options) {
   
   let config = {...defaultOptions};
 
