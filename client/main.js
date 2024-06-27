@@ -96,3 +96,48 @@ function handleDeleteCard(e) {
 }
 
 userCardInner.addEventListener('click', handleDeleteCard);
+
+
+// 삽입
+const createButton = getNode('.create');
+const cancelButton = getNode('.cancel');
+const doneButton = getNode('.done');
+
+function handleCreate() {
+  gsap.to('.pop', {autoAlpha: 1});
+}
+
+function handleCancel(e) {
+  e.stopPropagation(); // 버블링 방지
+  gsap.to('.pop', {autoAlpha: 0});
+}
+
+function handleDone(e) {
+  e.preventDefault();
+
+  const name = getNode('#nameField').value;
+  const email = getNode('#emailField').value;
+  const website = getNode('#siteField').value;
+
+  console.log(name, email, website);
+
+  const obj = {
+    name,
+    email,
+    website,
+  }
+
+  tiger.post(ENDPOINT, {name, email, website})
+  .then(() => {
+    // 1. 팝업 닫기
+    gsap.to('.pop', {autoAlpha: 0});
+    // 2. 카드 컨텐츠 비우기
+    clearContents(userCardInner);
+    // 3. 유저 카드 렌더링 하기
+    renderUserList();
+  })
+}
+
+createButton.addEventListener('click', handleCreate);
+cancelButton.addEventListener('click', handleCancel);
+doneButton.addEventListener('click', handleDone);
