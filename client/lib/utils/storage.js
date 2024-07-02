@@ -14,7 +14,7 @@ export function setStorage(key, value) {
       storage.setItem(key, JSON.stringify(value));
       resolve()
     } else {
-      reject()
+      reject({message: 'key는 문자 타입 이어야 합니다.'})
     }
   })
 } 
@@ -27,7 +27,7 @@ export function getStorage(key) {
     if(isString(key)) {
       resolve(JSON.parse(storage.getItem(key)));
     } else {
-      reject();
+      reject({message: 'key는 문자 타입 이어야 합니다.'});
     }
   })
 }
