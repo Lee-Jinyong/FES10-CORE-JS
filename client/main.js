@@ -1,26 +1,15 @@
-class Button extends HTMLElement {
-  constructor() {
-    super();
-    
-    // c-button의 쉐도우 돔을 열기
-    const shadow = this.attachShadow({mode:'open'}); // open, closed
+const template = document.createElement('template');
 
-    // 쉐도우 돔 내부에 내가 원하는 태그 넣기
-    shadow.innerHTML = `
-    <button>hello</button>
-    `
-  }
+template.innerHTML = `
+  <div>bye</div>
+  <div>javascript</div>
+`
 
-  connectedCallback() {
+console.log(template)
 
-  }
+const app = document.querySelector('#app');
+const temp = document.querySelector('#temp');
 
-  disconnectedCallback() {
+const clone = template.content.cloneNode(true);
 
-  }
-
-}
-
-customElements.define('c-button', Button);
-
-console.log(document.querySelector('c-button').shadowRoot.querySelector('button'));
+app.appendChild(clone);
