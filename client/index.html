@@ -12,21 +12,19 @@
   <title>자바스크립트</title>
 </head>
 <body>
+
   <div id="app">
-    <c-button></c-button>
+    <user-card>
+      <div slot="username">name: tiger</div>
+      <div slot="age">age: 40</div>
+      <div slot="gender">gender: male</div>
+      <div slot="common">a</div>
+      <div slot="common">b</div>
+      <div slot="common">c</div>
+      <div>d</div>
+      <div>e</div>
+    </user-card>
   </div>
 
-  <template id="temp">
-    <style>
-      div{
-        background-color: red;
-      }
-    </style>
-    <div>hello</div>
-    <div>javascript</div>
-    <script>
-      alert('템플릿 로드')
-    </script>
-  </template>
 </body>
 </html>
