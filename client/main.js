@@ -1,29 +1,21 @@
-import {
-  getNode,
-  getStorage,
-  setStorage,
-  deleteStorage,
-  clearContents,
-} from './lib/index.js';
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+  }
 
-const textField = getNode('#textField');
-const clear = getNode('button[data-name="clear"]');
+  connectedCallback() {
+    console.log('탄생함');
+  }
 
-getStorage('text')
-.then((res) => {
-  textField.value = res;
-})
-
-function handleTextField() {
-  const value = this.value;
-
-  setStorage('text', value);
+  disconnectedCallback() {
+    console.log('죽음');
+  }
 }
 
-function handleClear() {
-  deleteStorage('text');
-  clearContents(textField);
-}
+customElements.define("c-element", MyElement);
 
-textField.addEventListener('input', handleTextField);
-clear.addEventListener('click', handleClear);
+const elem = document.createElement('c-element');
+
+const app = document.getElementById('app')
+
+app.appendChild(elem);
